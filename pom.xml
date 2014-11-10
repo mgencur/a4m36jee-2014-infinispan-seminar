@@ -13,6 +13,7 @@
     <properties>
         <jsf.version>2.1</jsf.version>
         <infinispan.version>6.0.2.Final</infinispan.version>
+        <version.hibernate.search>4.5.1.Final</version.hibernate.search>
     </properties>
 
     <dependencies>
@@ -45,6 +46,26 @@
             <artifactId>jsf-api</artifactId>
             <version>${jsf.version}</version>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-search-engine</artifactId>
+            <version>${version.hibernate.search}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-search-analyzers</artifactId>
+            <version>${version.hibernate.search}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-search-infinispan</artifactId>
+            <version>${version.hibernate.search}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.infinispan</groupId>
+            <artifactId>infinispan-query</artifactId>
+            <version>${infinispan.version}</version>
         </dependency>
     </dependencies>
 
