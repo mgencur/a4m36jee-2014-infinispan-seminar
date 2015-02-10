@@ -24,8 +24,6 @@
                     <f:selectItems value="#{countriesForSearch}" var="country" itemLabel="#{country}" itemValue="#{country}" />
                 </h:selectOneMenu>
 
-                <h:outputLabel value="Match All:" for="matchAll" />
-                <h:selectBooleanCheckbox id="matchAll" value="#{carManager.matchAll}"/>
             </h:panelGrid>
 
             <h:commandButton action="#{carManager.search}" value="Search car" />
