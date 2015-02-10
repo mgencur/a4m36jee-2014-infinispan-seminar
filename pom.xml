@@ -12,11 +12,16 @@
 
     <properties>
         <jsf.version>2.1</jsf.version>
-        <infinispan.version>6.0.2.Final</infinispan.version>
-        <version.hibernate.search>4.5.1.Final</version.hibernate.search>
+        <infinispan.version>7.1.0.Final</infinispan.version>
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>org.infinispan</groupId>
+            <artifactId>infinispan-commons</artifactId>
+            <version>${infinispan.version}</version>
+            <scope>compile</scope>
+        </dependency>
         <dependency>
             <groupId>org.infinispan</groupId>
             <artifactId>infinispan-core</artifactId>
@@ -25,7 +30,7 @@
         </dependency>
         <dependency>
             <groupId>org.infinispan</groupId>
-            <artifactId>infinispan-commons</artifactId>
+            <artifactId>infinispan-query</artifactId>
             <version>${infinispan.version}</version>
             <scope>compile</scope>
         </dependency>
@@ -46,26 +51,6 @@
             <artifactId>jsf-api</artifactId>
             <version>${jsf.version}</version>
             <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-search-engine</artifactId>
-            <version>${version.hibernate.search}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-search-analyzers</artifactId>
-            <version>${version.hibernate.search}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-search-infinispan</artifactId>
-            <version>${version.hibernate.search}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.infinispan</groupId>
-            <artifactId>infinispan-query</artifactId>
-            <version>${infinispan.version}</version>
         </dependency>
     </dependencies>
 

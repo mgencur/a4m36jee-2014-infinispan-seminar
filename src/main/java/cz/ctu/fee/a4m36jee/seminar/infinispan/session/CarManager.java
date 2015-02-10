@@ -32,16 +32,13 @@ import javax.enterprise.inject.Model;
 import javax.inject.Inject;
 import javax.transaction.UserTransaction;
 
-import org.apache.lucene.search.BooleanQuery;
-import org.apache.lucene.search.Query;
-import org.hibernate.search.query.dsl.QueryBuilder;
 import org.infinispan.Cache;
 import org.infinispan.commons.api.BasicCache;
-import org.infinispan.query.CacheQuery;
 import org.infinispan.query.Search;
-import org.infinispan.query.SearchManager;
 
 import cz.ctu.fee.a4m36jee.seminar.infinispan.model.Car;
+import org.infinispan.query.dsl.*;
+
 
 /**
  * Adds, retrieves, removes new cars from the cache. Also returns a list of cars stored in the cache.
@@ -198,32 +195,20 @@ public class CarManager {
 
     public String search() {
         carCache = provider.getCacheContainer().getCache(CAR_CACHE_NAME);
-        SearchManager sm = Search.getSearchManager((Cache) carCache);
+        QueryFactory qf = Search.getQueryFactory((Cache) carCache);
 
-        // match all / any of parameters
-        Query q = matchAll ? createMatchAllQuery() : crateMatchAnyQuery(sm);
-
-        // create a cache query based on the Lucene query
-        CacheQuery cq = sm.getQuery(q, Car.class);
+        // match any parameter
+        Query q = crateMatchAnyQuery(qf);
 
         // invoke the cache query
-        searchResults = cq.list().stream().filter(o -> o instanceof Car).map(o -> (Car) o).collect(Collectors.toList());
+        searchResults = q.list().stream().filter(o -> o instanceof Car).map(o -> (Car) o).collect(Collectors.toList());
         return "searchresults";
     }
 
-    // TODO: create the query using BooleanQuery from Lucene
-    private Query createMatchAllQuery() {
-        BooleanQuery q = null;
-        System.out.println("Lucene Query: " + q.toString() );
-
-        return q;
-    }
-
-    // TODO: create the query using QueryBuilder from Hibernate
-    private Query crateMatchAnyQuery(SearchManager sm) {
-        QueryBuilder queryBuilder = null;
+    // TODO: create the query using QueryFactory from Infinispan
+    private Query crateMatchAnyQuery(QueryFactory qf) {
         Query q = null;
-        System.out.println("Hibernate Query: " + q.toString() );
+        System.out.println("Infinispan Query DSL: " + q.toString() );
 
         return q;
     }

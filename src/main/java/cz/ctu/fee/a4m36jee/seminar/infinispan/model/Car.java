@@ -23,6 +23,7 @@ package cz.ctu.fee.a4m36jee.seminar.infinispan.model;
 
 import java.io.Serializable;
 
+import org.hibernate.search.annotations.Analyze;
 import org.hibernate.search.annotations.Field;
 import org.hibernate.search.annotations.Indexed;
 
@@ -56,22 +57,22 @@ public class Car implements Serializable {
         this.country = country;
     }
 
-    @Field
+    @Field(analyze=Analyze.NO)
     private String brand;
 
-    @Field
+    @Field(analyze=Analyze.NO)
     private double displacement;
 
-    @Field
+    @Field(analyze=Analyze.NO)
     private CarType type;
 
-    @Field
+    @Field(analyze=Analyze.NO)
     private String color;
 
-    @Field
+    @Field(analyze=Analyze.NO)
     private Country country;
 
-    @Field
+    @Field(analyze=Analyze.NO)
     private String numberPlate;
 
     public String getBrand() {
